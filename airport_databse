@@ -1,0 +1,302 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: db
+-- Erstellungszeit: 14. Apr 2026 um 13:53
+-- Server-Version: 10.7.8-MariaDB-1:10.7.8+maria~ubu2004
+-- PHP-Version: 8.3.26
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Datenbank: `airport_database`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `airline`
+--
+
+CREATE TABLE `airline` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `airline`
+--
+
+INSERT INTO `airline` (`id`, `name`) VALUES
+(1, 'Lufthansa'),
+(2, 'Air France'),
+(3, 'Turkish Airlines');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `benutzer`
+--
+
+CREATE TABLE `benutzer` (
+  `id` int(11) NOT NULL,
+  `benutzername` varchar(50) NOT NULL,
+  `passwort` varchar(255) NOT NULL,
+  `position` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `benutzer`
+--
+
+INSERT INTO `benutzer` (`id`, `benutzername`, `passwort`, `position`) VALUES
+(4, 'user', '$2y$12$4LSoHNeI4cfseLW6V5XDruDcLKGMmx.khU3IlwfsZ2fkLELpSxVIy', 'admin'),
+(5, 'gb', '$2y$12$n3HQYv2lHO/1.WXy2Q7XheWtIkQXZS7YLvVsRbp5xwcmcSGuDm0sa', 'admin'),
+(6, 'mitarbeiter', '$2y$12$S.T0ZjgfLBBWr.HbfVfgAeAgIq5Ixu/w1J2kAaFQ8pYY.A2r77icu', 'mitarbeiter');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `checkin`
+--
+
+CREATE TABLE `checkin` (
+  `id` int(11) NOT NULL,
+  `flug_id` int(11) NOT NULL,
+  `gate_id` int(11) NOT NULL,
+  `schalter_nr` int(10) NOT NULL,
+  `checkin_beginn` datetime NOT NULL,
+  `checkin_ende` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `checkin`
+--
+
+INSERT INTO `checkin` (`id`, `flug_id`, `gate_id`, `schalter_nr`, `checkin_beginn`, `checkin_ende`) VALUES
+(1, 1, 1, 101, '2026-04-14 11:29:54', '2026-04-14 12:29:54'),
+(2, 1, 1, 102, '2026-04-14 11:29:54', '2026-04-14 12:29:54'),
+(3, 1, 1, 103, '2026-04-14 11:29:54', '2026-04-14 12:29:54'),
+(4, 2, 2, 104, '2026-04-14 11:34:54', '2026-04-14 12:34:54'),
+(5, 2, 2, 105, '2026-04-14 11:34:54', '2026-04-14 12:34:54'),
+(6, 2, 2, 106, '2026-04-14 11:34:54', '2026-04-14 12:34:54'),
+(7, 3, 3, 107, '2026-04-14 11:39:54', '2026-04-14 12:39:54'),
+(8, 3, 3, 108, '2026-04-14 11:39:54', '2026-04-14 12:39:54'),
+(9, 3, 3, 109, '2026-04-14 11:39:54', '2026-04-14 12:39:54'),
+(10, 4, 4, 101, '2026-04-14 11:44:54', '2026-04-14 12:44:54'),
+(11, 4, 4, 102, '2026-04-14 11:44:54', '2026-04-14 12:44:54'),
+(12, 4, 4, 103, '2026-04-14 11:44:54', '2026-04-14 12:44:54'),
+(13, 5, 1, 104, '2026-04-14 11:49:54', '2026-04-14 12:49:54'),
+(14, 5, 1, 105, '2026-04-14 11:49:54', '2026-04-14 12:49:54'),
+(15, 5, 1, 106, '2026-04-14 11:49:54', '2026-04-14 12:49:54'),
+(16, 6, 2, 107, '2026-04-14 11:54:54', '2026-04-14 12:54:54'),
+(17, 6, 2, 108, '2026-04-14 11:54:54', '2026-04-14 12:54:54'),
+(18, 6, 2, 109, '2026-04-14 11:54:54', '2026-04-14 12:54:54'),
+(19, 7, 3, 101, '2026-04-14 11:59:54', '2026-04-14 12:59:54'),
+(20, 7, 3, 102, '2026-04-14 11:59:54', '2026-04-14 12:59:54'),
+(21, 7, 3, 103, '2026-04-14 11:59:54', '2026-04-14 12:59:54'),
+(22, 8, 4, 104, '2026-04-14 12:04:54', '2026-04-14 13:04:54'),
+(23, 8, 4, 105, '2026-04-14 12:04:54', '2026-04-14 13:04:54'),
+(24, 8, 4, 106, '2026-04-14 12:04:54', '2026-04-14 13:04:54'),
+(25, 9, 1, 107, '2026-04-14 12:09:54', '2026-04-14 13:09:54'),
+(26, 9, 1, 108, '2026-04-14 12:09:54', '2026-04-14 13:09:54'),
+(27, 9, 1, 109, '2026-04-14 12:09:54', '2026-04-14 13:09:54'),
+(28, 10, 2, 101, '2026-04-14 12:14:54', '2026-04-14 13:14:54'),
+(29, 10, 2, 102, '2026-04-14 12:14:54', '2026-04-14 13:14:54'),
+(30, 10, 2, 103, '2026-04-14 12:14:54', '2026-04-14 13:14:54');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `fluege`
+--
+
+CREATE TABLE `fluege` (
+  `id` int(11) NOT NULL,
+  `flug_nr` varchar(10) NOT NULL,
+  `ziel` varchar(100) NOT NULL,
+  `airline_id` int(11) NOT NULL,
+  `abflugzeit` datetime NOT NULL,
+  `flugzeug_typ` varchar(50) NOT NULL,
+  `max_passagiere_kapazitaet` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `fluege`
+--
+
+INSERT INTO `fluege` (`id`, `flug_nr`, `ziel`, `airline_id`, `abflugzeit`, `flugzeug_typ`, `max_passagiere_kapazitaet`) VALUES
+(1, 'LH301', 'Berlin', 1, '2026-04-14 13:29:54', 'Airbus A320', 180),
+(2, 'AF302', 'Paris', 2, '2026-04-14 13:34:54', 'Boeing 737', 160),
+(3, 'TK303', 'Istanbul', 3, '2026-04-14 13:39:54', 'Airbus A321', 200),
+(4, 'LH304', 'Wien', 1, '2026-04-14 13:44:54', 'Airbus A319', 150),
+(5, 'AF305', 'Rom', 2, '2026-04-14 13:49:54', 'Boeing 737', 160),
+(6, 'TK306', 'Ankara', 3, '2026-04-14 13:54:54', 'Airbus A320', 180),
+(7, 'LH307', 'Hamburg', 1, '2026-04-14 13:59:54', 'Airbus A321', 190),
+(8, 'AF308', 'Barcelona', 2, '2026-04-14 14:04:54', 'Boeing 737', 160),
+(9, 'TK309', 'Izmir', 3, '2026-04-14 14:09:54', 'Airbus A321', 200),
+(10, 'LH310', 'München', 1, '2026-04-14 14:14:54', 'Airbus A320', 180);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `gate`
+--
+
+CREATE TABLE `gate` (
+  `id` int(11) NOT NULL,
+  `gate_name` varchar(10) NOT NULL,
+  `max_kapazitaet` int(11) NOT NULL,
+  `security_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `gate`
+--
+
+INSERT INTO `gate` (`id`, `gate_name`, `max_kapazitaet`, `security_id`) VALUES
+(1, 'A1', 100, 1),
+(2, 'A2', 120, 1),
+(3, 'A3', 150, 1),
+(4, 'A4', 200, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `security`
+--
+
+CREATE TABLE `security` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `max_kapazitaet` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `security`
+--
+
+INSERT INTO `security` (`id`, `name`, `max_kapazitaet`) VALUES
+(1, 'Security 1', 300);
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `airline`
+--
+ALTER TABLE `airline`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `benutzer`
+--
+ALTER TABLE `benutzer`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `benutzername` (`benutzername`);
+
+--
+-- Indizes für die Tabelle `checkin`
+--
+ALTER TABLE `checkin`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `checkin_ibfk_1` (`flug_id`),
+  ADD KEY `checkin_ibfk_2` (`gate_id`);
+
+--
+-- Indizes für die Tabelle `fluege`
+--
+ALTER TABLE `fluege`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fluege_ibfk_1` (`airline_id`);
+
+--
+-- Indizes für die Tabelle `gate`
+--
+ALTER TABLE `gate`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `gate_ibfk_1` (`security_id`);
+
+--
+-- Indizes für die Tabelle `security`
+--
+ALTER TABLE `security`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `airline`
+--
+ALTER TABLE `airline`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT für Tabelle `benutzer`
+--
+ALTER TABLE `benutzer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT für Tabelle `checkin`
+--
+ALTER TABLE `checkin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT für Tabelle `fluege`
+--
+ALTER TABLE `fluege`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT für Tabelle `gate`
+--
+ALTER TABLE `gate`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT für Tabelle `security`
+--
+ALTER TABLE `security`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `checkin`
+--
+ALTER TABLE `checkin`
+  ADD CONSTRAINT `checkin_ibfk_1` FOREIGN KEY (`flug_id`) REFERENCES `fluege` (`id`),
+  ADD CONSTRAINT `checkin_ibfk_2` FOREIGN KEY (`gate_id`) REFERENCES `gate` (`id`);
+
+--
+-- Constraints der Tabelle `fluege`
+--
+ALTER TABLE `fluege`
+  ADD CONSTRAINT `fluege_ibfk_1` FOREIGN KEY (`airline_id`) REFERENCES `airline` (`id`);
+
+--
+-- Constraints der Tabelle `gate`
+--
+ALTER TABLE `gate`
+  ADD CONSTRAINT `gate_ibfk_1` FOREIGN KEY (`security_id`) REFERENCES `security` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
