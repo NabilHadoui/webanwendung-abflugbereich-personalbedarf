@@ -24,7 +24,11 @@ Dadurch können Engpässe und Überkapazitäten im Personaleinsatz rechtzeitig e
   
 #Flugdaten Update
   Link: https://www.mockaroo.com/91b9d080
-
+  
+  Um den Test durchzuführen, können die Flugdaten über den bereitgestellten Link  zu einem Mockaroo-Schema generiert werden.
+  Diese können aus der erstellten JSON-Datei kopiert und in die Datei „flugdaten_update.json“ eingefügt werden. Anschließend wird über entsprechende Buttons die Flugdaten-API ausgeführt. 
+  Danach wird ebenfalls über Buttons die Dashboard-API gestartet, um die aktualisierten Daten im Dashboard zu übernehmen und anzuzeigen.
+  
 #Scrennshot
 
 ![3](https://github.com/user-attachments/assets/c7e47edf-5d4c-4b85-baab-26f05488509d)
