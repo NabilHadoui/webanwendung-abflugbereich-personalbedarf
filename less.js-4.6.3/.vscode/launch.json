@@ -1,0 +1,21 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Less test",
+			"program": "${workspaceFolder}/packages/less/test/index.js",
+			"cwd": "${workspaceFolder}/packages/less",
+			"console": "integratedTerminal"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Benchmark test",
+			"program": "${workspaceFolder}/packages/less/benchmark/index.js",
+			"cwd": "${workspaceFolder}/packages/less",
+			"console": "integratedTerminal"
+		}
+	]
+}

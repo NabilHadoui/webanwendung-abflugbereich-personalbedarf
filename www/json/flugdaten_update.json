@@ -1,0 +1,52 @@
+[{
+  "flug_id": 1,
+  "abflugzeit": "2026-04-14 13:29:54",
+  "checkin_beginn": "2026-04-14 11:29:54",
+  "checkin_ende": "2026-04-14 12:29:54"
+}, {
+  "flug_id": 2,
+  "abflugzeit": "2026-04-14 13:34:54",
+  "checkin_beginn": "2026-04-14 11:34:54",
+  "checkin_ende": "2026-04-14 12:34:54"
+}, {
+  "flug_id": 3,
+  "abflugzeit": "2026-04-14 13:39:54",
+  "checkin_beginn": "2026-04-14 11:39:54",
+  "checkin_ende": "2026-04-14 12:39:54"
+}, {
+  "flug_id": 4,
+  "abflugzeit": "2026-04-14 13:44:54",
+  "checkin_beginn": "2026-04-14 11:44:54",
+  "checkin_ende": "2026-04-14 12:44:54"
+}, {
+  "flug_id": 5,
+  "abflugzeit": "2026-04-14 13:49:54",
+  "checkin_beginn": "2026-04-14 11:49:54",
+  "checkin_ende": "2026-04-14 12:49:54"
+}, {
+  "flug_id": 6,
+  "abflugzeit": "2026-04-14 13:54:54",
+  "checkin_beginn": "2026-04-14 11:54:54",
+  "checkin_ende": "2026-04-14 12:54:54"
+}, {
+  "flug_id": 7,
+  "abflugzeit": "2026-04-14 13:59:54",
+  "checkin_beginn": "2026-04-14 11:59:54",
+  "checkin_ende": "2026-04-14 12:59:54"
+}, {
+  "flug_id": 8,
+  "abflugzeit": "2026-04-14 14:04:54",
+  "checkin_beginn": "2026-04-14 12:04:54",
+  "checkin_ende": "2026-04-14 13:04:54"
+}, {
+  "flug_id": 9,
+  "abflugzeit": "2026-04-14 14:09:54",
+  "checkin_beginn": "2026-04-14 12:09:54",
+  "checkin_ende": "2026-04-14 13:09:54"
+}, {
+  "flug_id": 10,
+  "abflugzeit": "2026-04-14 14:14:54",
+  "checkin_beginn": "2026-04-14 12:14:54",
+  "checkin_ende": "2026-04-14 13:14:54"
+}]
+

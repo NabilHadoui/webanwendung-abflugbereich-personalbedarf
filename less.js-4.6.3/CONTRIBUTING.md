@@ -1,0 +1,158 @@
+# Contributing to Less.js
+
+Thank you for your interest in contributing to Less.js! Contributions come in many forms—fixing bugs, improving code quality, enhancing tooling, updating documentation, and occasionally adding new features. This guide will help you get started.
+
+## Getting Started
+
+Before you begin, please note: **Words that begin with the at sign (`@`) must be wrapped in backticks!** This prevents unintended notifications to GitHub users. For example, use `` `@username` `` instead of `@username`.
+
+GitHub has many great markdown features—[learn more about them here](https://help.github.com/articles/github-flavored-markdown).
+
+## Reporting Issues
+
+We welcome bug reports and feature requests! To help us help you, please follow these guidelines:
+
+1. **Search for existing issues first.** Many issues have already been reported or resolved. Checking first saves everyone time.
+2. **Create an isolated and reproducible test case.** Include [reduced test cases](http://css-tricks.com/reduced-test-cases/) that demonstrate the problem clearly.
+3. **Test with the latest version.** Many issues are resolved in newer versions—please update first.
+4. **Include examples with source code.** You can use [Less Preview](http://lesscss.org/less-preview/) to create a short test case.
+5. **Share as much information as possible.** Include:
+   - Operating system and version
+   - How you're using Less (browser, command line, build tool, etc.)
+   - Browser and version (if applicable)
+   - Version of Less.js you're using
+   - Clear steps to reproduce the issue
+6. **Suggest solutions if you have them.** If you know how to fix it, share your approach or submit a pull request!
+
+Please report documentation issues in [the documentation project](https://github.com/less/less-docs).
+
+## Feature Requests
+
+When suggesting features:
+
+* **Search existing feature requests first** to see if something similar already exists. Many features are already planned or under consideration.
+* **Include a clear and specific use-case.** Help us understand the practical need and how it would be used.
+* **Consider alternatives.** Sometimes a function or a 3rd-party build system might be a better fit than a core language feature.
+
+**Note:** Most helpful contributions to Less.js are organizational—addressing bugs, improving code quality, enhancing tooling, and updating documentation. The language features are generally stable, even if not all planned features have been implemented yet.
+
+## Pull Requests
+
+Pull requests are welcome! Here's how to make them go smoothly:
+
+* **For new features, start with a feature request** to get feedback and see how your idea is received.
+* **If your PR solves an existing issue**, but approaches it differently, please create a new issue first and discuss it with core contributors. This helps avoid wasted effort.
+* The `dist/` folder is gitignored—builds happen automatically during releases.
+* **Please add tests** for your work. Run tests using `pnpm test`, which runs both Node.js and browser (Headless Chrome) tests.
+
+### Coding Standards
+
+* Always use spaces, never tabs
+* End lines with semicolons
+* Aim for ESLint standards
+
+## Developing
+
+If you want to work on an issue, add a comment saying you're taking it on—this helps prevent duplicate work.
+
+Learn more about [developing Less.js](http://lesscss.org/usage/#developing-less).
+
+## Releases
+
+Releases are fully automated! Here's how it works:
+
+### Automated Publishing
+
+When code is pushed to specific branches, GitHub Actions automatically:
+
+1. **Runs tests and builds** the project
+2. **Bumps the version** automatically
+3. **Publishes to npm** with the appropriate tag
+4. **Creates a GitHub release**
+
+### Release Branches
+
+- **`master` branch**: 
+  - Publishes regular releases (e.g., `4.4.2` → `4.4.3`)
+  - Published to npm with `latest` tag
+  - Creates regular GitHub releases
+  - Version auto-increments by patch unless explicitly set
+
+- **`alpha` branch**:
+  - Publishes alpha releases (e.g., `5.0.0-alpha.1` → `5.0.0-alpha.2`)
+  - Published to npm with `alpha` tag
+  - Creates GitHub pre-releases
+  - Version auto-increments alpha suffix
+
+### How to Publish
+
+**For patch releases (automatic):**
+1. Merge your PR into `master`
+2. The workflow compares `package.json` against the latest npm version
+3. If `package.json` is ahead, it uses that version; otherwise it bumps to the next patch
+4. Publishes to npm and creates a GitHub release with `less.js` and `less.min.js` attached
+
+**For minor/major releases:**
+1. Create a release branch (e.g., `release/v4.7.0`)
+2. Update `version` in all `package.json` files and update `CHANGELOG.md`
+3. Merge into `master`
+4. The workflow detects the version is ahead of npm and publishes it directly
+
+**For alpha releases:**
+1. Make your changes on the `alpha` branch
+2. Commit and push
+3. The workflow automatically increments the alpha version and publishes
+
+### Version Override
+
+To force a specific version (useful for CI or manual runs), set the `EXPLICIT_VERSION` environment variable:
+
+```bash
+EXPLICIT_VERSION=4.7.0 pnpm run publish
+```
+
+### Release Assets
+
+Each GitHub release automatically includes:
+- `less.js` — the full browser build
+- `less.min.js` — the minified browser build
+
+These are built during the workflow and attached to the release. They are not committed to git (the `dist/` directory is gitignored).
+
+### Security
+
+We use npm's [trusted publishing](https://docs.npmjs.com/trusted-publishers) with OIDC authentication. This means:
+- No long-lived tokens needed
+- Automatic provenance generation
+- Enhanced security through short-lived, workflow-specific credentials
+
+The publishing workflow (`.github/workflows/publish.yml`) handles both release types automatically.
+
+### Important Notes
+
+- Publishing only works from `master` or `alpha` branches
+- Alpha versions must contain `-alpha.` and are published to the `alpha` tag
+- Regular versions are published to the `latest` tag
+- Alpha branch must be up-to-date with master before publishing
+- Alpha base version must be >= master version (semver)
+
+### Merging Master into Alpha
+
+When merging `master` into `alpha`, the version in `package.json` might be overwritten. We have two layers of protection:
+
+1. **Post-merge git hook** (automatic): Automatically restores alpha versions after merges
+   - Installed automatically via husky when you run `pnpm install`
+   - Runs automatically after `git merge`
+   - Restores and increments the alpha version if it was overwritten
+   - Prompts you to commit the restored version
+
+2. **Publishing script detection** (safety net): The publishing script also detects overwritten versions
+   - Searches git history for the last alpha version
+   - Restores and increments it (e.g., if it was `5.0.0-alpha.3`, it becomes `5.0.0-alpha.4`)
+   - Updates all package.json files accordingly
+
+**Note**: The git hook is managed by husky and installs automatically. The publishing script protection works as a backup even if the hook isn't installed.
+
+---
+
+Thank you for contributing to Less.js!

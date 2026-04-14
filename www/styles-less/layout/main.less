@@ -1,0 +1,248 @@
+body {
+	/* Hintergrund für die Navigation: linearer Farbverlauf von Blau zu Dunkelblau */
+	/*@linearfarbeverlauf aus variablen.less*/
+	background: @linearfarbeverlauf;	
+	background-size: cover;
+	/* Hintergrundbild zentrieren */
+	background-position: center;
+}
+/* Form login.php / registrieren.php*/
+#form_div {
+  /* Flexbox: Zentriert das Formular */
+  display: flex;
+  /* Horizontale Zentrierung */
+  justify-content: center;
+  /* Vertikale Zentrierung */
+  align-items: center;
+  /* Breite des Viewports */
+  width: 100vw;
+  /* Höhe des Viewports */
+  height: 100vh;
+  form {
+
+  	/*dunkler Hintergrund, zentriert Inhalt */
+      background-color: @halbtransparente;
+  	/* Breite 40% der verfügbaren Breite*/
+      width: 40%;
+  	/* Maximale Breite 500px */
+      max-width: 500px;   
+  	/* Minimale Breite 300px */
+      min-width: 300px;   
+  	/* Höhe automatisch */
+      height: auto;  
+  	/* Abstand innen  beträgt 20px */     
+      padding: 20px;
+  	/* Schwarzer Rand  mit 1px */
+      border: 1px solid @textfarbe4;
+  	/* Abgerundete Ecken für 10px */
+      border-radius: 10px;
+      display: flex;
+  	/* Anordnung der Elemente in einer Spalte */
+      flex-direction: column;
+  	/* Zentrierung der Elemente */
+      align-items: center;
+  	/* Abstand zwischen den Elementen */
+      gap: 10px;
+  }
+  h2 {
+  	  /* Textfarbe : @regularfarbe1 aus varaiblen.less importiert*/
+        color: @regularfarbe1;
+  	  /* Schriftgröße */
+        font-size: 3rem; 
+  	  /* Zentrierter Text */
+        text-align: center;
+   }
+   div {
+     /* Halbtransparenter Hintergrund */
+        background-color: @halbtransparente;
+        width: 80%;
+        display: flex;
+     /* Elemente horizontal anordnen */
+        flex-direction: row;
+     /* Abstand zwischen den Elementen */
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 5px;
+        border-radius: 5px;
+		label {
+		    color: @regularfarbe6;
+		    padding: 5px;
+		    font-size: 1.5rem;
+		}
+		input,select {
+		    width: 45%;
+		    border-radius: 5px;
+		    padding: 10px;
+		    font-size: 1rem;
+		}
+		select {
+			/* Hintergrundfarbe für select */
+		    background-color: @regularfarbe2;
+		    color: @regularfarbe1;
+			/* Setzt den Text in Fettdruck */
+		    font-weight: bold;
+		}			  		
+  }
+  button,
+      a {
+        width: 80%;
+        padding: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 5px;
+        text-align: center;
+  	  /* Keine Unterstreichung */
+        text-decoration: none;
+  }
+  button {
+        background-color: @regularfarbe2;
+        color: @regularfarbe1;
+  	  /* Kein Rand */
+        border: none;
+        /* in LESS: Der &-Operator bezieht sich auf das aktuelle Element und :hover ist der Zustand,
+  	   wenn die Maus darüber bewegt wird, dabei wird die Hintergrundfarbe von @regularfarbe2 zu @regularfarbe5 geändert */
+  	  
+        &:hover {
+  		/* Hintergrundfarbe bei Mausbewegung über das Element */
+          background-color: @regularfarbe5;
+        }
+   }  
+   a {
+       background-color: @regularfarbe2;
+       color: @regularfarbe1;
+   } 
+} 
+
+
+// ----MEDIA QUERIES ---------
+/* Responsive: von Tablet bis Desktop*/
+@media (min-width: 769px ) and(max-width: 1199px){
+	#form_div{
+		form{
+			width: 60%;
+			padding: 20px;
+			h2{
+				font-size: 2.5rem;
+			}
+			div{
+				flex-direction: row;
+				gap: 5px;
+				label{
+					font-size: 1.4rem;
+				}
+				input, select{
+					width: 50%;
+					font-size: 1rem;
+				}
+			}
+			button, a{
+				width: 80%;
+				font-size: 1.2rem;
+			}
+		}
+	}
+}
+ /* Responsive: Tablet */
+ @media (max-width: 768px) {
+	#form_div{
+	   form {
+	   /* Breite auf 70% verkleinern  statt 100%*/
+	     width: 70%;      
+	   /* Weniger Padding */  
+	     padding: 15px;
+	
+	     h2 {
+	 	/* Schriftgröße verkleinern statt 3rem*/
+	       font-size: 2rem;
+	     }
+	
+	     div {
+			
+	 	/* Elemente vertikal anordnen statt mit  flex-direction: row;  flex-direction:horizontal*/	       
+	 	/* Weniger Abstand zwischen den Elementen statt 10px*/
+	       gap: 5px;
+	      flex-direction: column;
+		  text-align: center;
+	       label, input, select {
+	 	/* Breite auf 100% setzen statt 45% */
+	         width: 100%;
+	 	  /* Schriftgröße anpassen statt max 1.5rem*/
+	         font-size: 1.1rem;
+	       }
+	     }
+	
+	     button, a {
+	 	/* Schriftgröße anpassen statt 1.2rem*/		  
+	       font-size: 1rem;
+	     }
+	   }
+   }
+ }
+ /* Responsive: Smartphone  */
+   @media (max-width: 480px) {
+	#form_div{
+		background: @linearfarbeverlauf;	
+		form{
+			/* Breite auf 90% vergrößern */
+			width: 90%;       
+			/* Noch weniger Padding */   
+			padding: 10px;
+		
+			h2 {
+			  /* Schriftgröße weiter verkleinern */
+			  font-size: 1.5rem;
+			}
+			div {	
+				flex-direction: column;	
+				text-align: center;
+			   	/* Sehr kleinen Abstand zwischen den Elementen */
+			     gap: 3px;					
+			   	/* Schriftgröße weiter anpassen */
+			    label, input, select {	
+					width: 100%;					
+			        font-size: 1rem;
+			   }
+			 }
+			 button, a {
+			   	/* Schriftgröße anpassen */
+			     font-size: 1rem;
+			 }		
+		}		
+	}    
+   }
+
+/*  dashboard.php  */
+
+.container {
+	/* Hintergrund: kreisförmiger Farbverlauf von Blau (#3498db) zu Dunkelblau (#2c3e50) */
+	/*@kreisfoermigerfarbeverlauf aus variablen.less*/
+	background-image: @kreisfoermigerfarbeverlauf;
+	/* abgerundete Ecken mit 10px */
+	border-radius: 10px;
+	padding: 10px;
+	h1,h2{
+		color: @textfarbe2;
+		text-align: center;		
+	}
+	.nav{
+		/* 10px Abstand zwischen den Links */
+		gap: 10px; 		
+		background: @linearfarbeverlauf;			
+		/* Links in der Navigation */		
+		a{
+			color: @textfarbe2;		
+			/* Hover-Effekt: Textfarbe ändern : von @textfarbe2 zu @textfarbe1*/	
+			&:hover{								
+				color: @textfarbe1;									
+			}
+		}
+		.logout-button{			
+			background-color: @regularfarbe7;
+			&:hover{
+				color: @textfarbe1;
+				background-color: @regularfarbe2;
+			}
+		}
+	}
+}
