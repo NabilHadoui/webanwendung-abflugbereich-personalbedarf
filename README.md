@@ -1,4 +1,4 @@
-# webanwendung-abflugbereich-personalbedarf
+# webanwendung-flughafen-abflugbereich-personalbedarf
 # Projekt Titel: Webanwendung zur Analyse und Simulation von Personalkapazitäten im Abflugbereich eines Flughafens
 
 #Ziel:
